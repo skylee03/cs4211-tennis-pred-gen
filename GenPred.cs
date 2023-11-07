@@ -20,7 +20,7 @@ namespace PAT.GenPred
         outputFile = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), outputFile);
       StringBuilder sb = new StringBuilder();
       StreamWriter sw = new StreamWriter(outputFile);
-      sw.WriteLine("date,P1Name,P2Name,P1WinProb,P2WinProb");
+      sw.WriteLine("date,P1Name,P2Name,P1MinProb,P1MaxProb");
       foreach (string file in Directory.GetFiles(inputDir))
       {
         try
@@ -70,13 +70,9 @@ namespace PAT.GenPred
             string result = assertionBase.VerificationOutput.ResultString;
             Match match = Regex.Match(result, "\\d\\.\\d*");
             double p1min = double.Parse(match.Value);
-            double p2max = 1 - double.Parse(match.Value);
             match = match.NextMatch();
             double p1max = double.Parse(match.Value);
-            double p2min = 1 - double.Parse(match.Value);
-            double p1prob = (p1min + p1max) / 2;
-            double p2prob = (p2min + p2max) / 2;
-            sb.AppendLine(p1prob + "," + p2prob);
+            sb.AppendLine(p1min + "," + p1max);
             sw.Write(sb.ToString());
             sw.Flush();
             sb = new StringBuilder();
