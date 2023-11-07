@@ -11,4 +11,4 @@ GenPred <input> <output>
 * `input`: A directory containing several `.pcsp` files.
 * `output`: A file in `.csv` format.
 
-`GenPred` will verify all PCSP models in the `input` directory by calling the dynamic link libraries (DLLs) of [Process Analysis Toolkit (PAT)](https://pat.comp.nus.edu.sg/) and store the reachability probabilities (take the average of $\mathit{Pr}^{\min}$ and $\mathit{Pr}^{\max}$ for simplicity) of winning states to `output`, which will then be evaluated by the betting simulator.
+`GenPred` will verify all PCSP models in the `input` directory by calling the dynamic link libraries (DLLs) of [Process Analysis Toolkit (PAT)](https://pat.comp.nus.edu.sg/) and store the minimal and maximal reachability probabilities of winning states to `output`, which will then be evaluated by the betting simulator.
